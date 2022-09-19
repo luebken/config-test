@@ -2,6 +2,13 @@ apiVersion: meta.pkg.crossplane.io/v1
 kind: Configuration
 metadata:
   name: crossplane-test-config
+  annotations:
+    friendly-name.meta.crossplane.io: "Corssplane Test Config"
+    meta.crossplane.io/source: https://github.com/luebken/config-test
+    meta.crossplane.io/license: Some license
+    meta.crossplane.io/maintainer: Someone
+    meta.crossplane.io/description: A short description
+    meta.crossplane.io/readme: A long description
 spec:
   crossplane:
     version: '>=v1.9.1'
