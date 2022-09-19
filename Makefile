@@ -5,11 +5,10 @@ cleanup:
 	rm *.xpkg
 	kubectl delete configuration ${REPO}-crossplane-test-config
 
-build:m
+build: cleanup
 	kubectl crossplane build configuration
-	docker import crossplane-test-config-*.xpkg ${REPO}/crossplane-test-config:v0.0.1
-	docker push ${REPO}/crossplane-test-config:v0.0.1
+	kubectl crossplane push configuration ${REPO}/crossplane-test-config:v0.0.5
 
-install: 
-	kubectl crossplane install configuration ${REPO}/crossplane-test-config:v0.0.1
+install: build
+	kubectl crossplane install configuration ${REPO}/crossplane-test-config:v0.0.5
 	kubectl get configuration
