@@ -4,7 +4,7 @@ metadata:
   name: crossplane-test-config
 spec:
   crossplane:
-    version: '>v1.9.1'
+    version: '>=v1.9.1'
   dependsOn:
   - provider: crossplane/provider-aws
-    version: '>v0.31.0'
+    version: '>=v0.31.0'
