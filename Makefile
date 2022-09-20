@@ -13,8 +13,12 @@ build: cleanup
 	kubectl crossplane build configuration
 	kubectl crossplane push configuration ${REPO}/$(NAME):${VERSION}
 
+build-with-up: 
+	up xpkg build --examples-root examples
+	up xpkg push --create ${REPO}/$(NAME):${VERSION}
+	open https://marketplace.upbound.io/configurations/${REPO}/$(NAME)/${VERSION}
+
+
 install: build
 	kubectl crossplane install configuration ${REPO}/$(NAME):${VERSION}
 	kubectl get configuration
-	up xpkg push --create ${REPO}/$(NAME):${VERSION}
-	open https://marketplace.upbound.io/configurations/${REPO}/$(NAME)/${VERSION}

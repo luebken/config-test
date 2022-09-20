@@ -1,0 +1,13 @@
+# kubectl create ns dev-space
+# BUCKET_NAME=test-bucket-$RANDOM
+apiVersion: storage.example.com/v1alpha1
+kind: AcmeBucket
+metadata:
+  name: test-bucket
+  namespace: dev-space
+spec:
+  compositionSelector:
+    matchLabels:
+      provider: aws
+  parameters:
+    bucketName: $BUCKET_NAME
